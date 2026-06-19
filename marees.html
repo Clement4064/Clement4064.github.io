@@ -427,11 +427,11 @@
 			function donneOrientationVent(orientationEnDegres) //f(x=)
 			{
 				//= 3x+8
-				if (orientationEnDegres>0 && orientationEnDegres < 90)
+				if (orientationEnDegres > 0 && orientationEnDegres < 90)
 					return "NE"
-				else if (orientationEnDegres>=90 && orientationEnDegres < 180)
+				else if (orientationEnDegres >= 90 && orientationEnDegres < 180)
 					return "SE"
-				else if (orientationEnDegres>=180 && orientationEnDegres < 270)
+				else if (orientationEnDegres >= 180 && orientationEnDegres < 270)
 					return "SW"
 				else
 					return "NW"
@@ -454,21 +454,21 @@
 
 				//VENT
 				//https://api.open-meteo.com/v1/forecast?latitude=48.52732&longitude=-1.51483&hourly=wind_direction_180m&current=wind_direction_180mt&timezone=Europe%2FBerlin
-                 const res_url_wind_direction_180m = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${e.latlng.lat}&longitude=${e.latlng.lng}&hourly=wind_direction_180m&current=wind_direction_180mt&timezone=Europe%2FBerlin`);
-                 console.log(res_url_wind_direction_180m)
-			     const data_wind_direction_180m = await res_url_wind_direction_180m.json();
+				const res_url_wind_direction_180m = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${e.latlng.lat}&longitude=${e.latlng.lng}&hourly=wind_direction_180m&current=wind_direction_180mt&timezone=Europe%2FBerlin`);
+				console.log(res_url_wind_direction_180m)
+				const data_wind_direction_180m = await res_url_wind_direction_180m.json();
 
 				// on affiche la popup avec les donnees recuperees
 				popup
 					.setLatLng(e.latlng)
 					// CLEMENT : ajouter la hauteur de vagues dans le texte de la popup
-					.setContent(`<b>${e.target.myData.station}</b><p>Temperature: ${data_temperature.current.sea_surface_temperature}°C<br>Hauteur de vagues: ${data_wave_height.current.wave_height}m <br>Vent: ${donneOrientationVent(data_wind_direction_180m.current.wind_direction_180m)} (${data_wind_direction_180m.current.wind_direction_180m}°)`)
+					.setContent(`<b>${e.target.myData.station}</b><p>Température de l'eau: ${data_temperature.current.sea_surface_temperature}°C<br>Hauteur de vagues: ${data_wave_height.current.wave_height}m <br>Vent: ${donneOrientationVent(data_wind_direction_180m.current.wind_direction_180m)} (${data_wind_direction_180m.current.wind_direction_180m}°)`)
 					.openOn(map)
-			
-                
 
-			     
-				}
+
+
+
+			}
 
 		}
 
