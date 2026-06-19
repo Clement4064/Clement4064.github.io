@@ -12,8 +12,13 @@
 			height: 100%;
 			overflow: hidden;
 		}
+		body {
+			display: flex;
+			justify-content: center;
+		}
 		#vignette-wrapper {
-			transform-origin: top left;
+			display: inline-block;
+			transform-origin: top center;
 		}
 	</style>
 </head>
@@ -35,12 +40,12 @@
 
 	<script>
 		function fitVignette() {
-			const wrapper = document.getElementById('vignette-wrapper');
-			const scaleX = window.innerWidth  / wrapper.scrollWidth;
-			const scaleY = window.innerHeight / wrapper.scrollHeight;
-			const scale  = Math.min(scaleX, scaleY, 1);
-			wrapper.style.transform = `scale(${scale})`;
-		}
+				const wrapper = document.getElementById('vignette-wrapper');
+				const scaleX = window.innerWidth  / wrapper.scrollWidth;
+				const scaleY = window.innerHeight / wrapper.scrollHeight;
+				const scale  = Math.min(scaleX, scaleY, 1);
+				wrapper.style.transform = `scale(${scale})`;
+			}
 
 		window.addEventListener('load', fitVignette);
 		window.addEventListener('resize', fitVignette);
